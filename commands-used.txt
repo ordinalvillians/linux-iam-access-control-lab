@@ -1,0 +1,61 @@
+# Linux IAM Access Control Lab
+# Commands used for configuration and verification
+
+# Create the department groups
+sudo groupadd IT
+sudo groupadd HR
+sudo groupadd Finance
+
+# Create the users
+sudo useradd -m alice
+sudo useradd -m david
+sudo useradd -m sarah
+sudo useradd -m john
+
+# Add users to their department groups
+sudo usermod -aG IT alice
+sudo usermod -aG IT david
+sudo usermod -aG HR sarah
+sudo usermod -aG Finance john
+
+# Create departmental directories
+sudo mkdir -p /company/IT
+sudo mkdir -p /company/HR
+sudo mkdir -p /company/Finance
+
+# Assign directory ownership
+sudo chown root:IT /company/IT
+sudo chown root:HR /company/HR
+sudo chown root:Finance /company/Finance
+
+# Set directory permissions
+sudo chmod 770 /company/IT
+sudo chmod 770 /company/HR
+sudo chmod 770 /company/Finance
+
+# Create sample files
+echo "IT department test file" | sudo tee /company/IT/test.txt
+echo "HR department test file" | sudo tee /company/HR/test.txt
+echo "Finance department test file" | sudo tee /company/Finance/test.txt
+
+# Verify users and groups
+getent group IT
+getent group HR
+getent group Finance
+id alice
+id david
+id sarah
+id john
+
+# Verify directory permissions
+ls -ld /company /company/IT /company/HR /company/Finance
+
+# Test authorized access
+sudo -u alice ls /company/IT
+sudo -u sarah ls /company/HR
+sudo -u john ls /company/Finance
+
+# Test unauthorized access
+sudo -u alice ls /company/Finance
+sudo -u sarah ls /company/IT
+sudo -u john ls /company/HR
