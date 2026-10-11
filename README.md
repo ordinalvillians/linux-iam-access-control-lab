@@ -1,25 +1,57 @@
 # Linux IAM Access Control Lab
 
-## Overview
-A hands-on cybersecurity lab using Kali Linux to practise
-Linux user management, department groups, file ownership,
-permissions, and least-privilege access control.
+A hands-on Identity and Access Management (IAM) lab built in Kali Linux to demonstrate Linux user management, group-based access control, file permissions, and the principle of least privilege.
+
+## Project Overview
+
+This project simulates a small company with three departments:
+
+- IT
+- HR
+- Finance
+
+Each department has its own protected directory.
+
+Users are assigned to department groups and are only permitted to access resources belonging to their assigned department.
+
+The lab demonstrates how Linux groups, ownership, and permissions can be used to enforce basic access control.
 
 ## Objectives
-- Create users and department groups
-- Restrict departmental directory access
-- Test permitted and denied access
-- Document results with screenshots
 
-## Environment
-- Kali Linux
-- VMware Workstation
+- Create and manage Linux user accounts
+- Create department-based security groups
+- Assign users to appropriate groups
+- Create protected departmental directories
+- Configure ownership and permissions
+- Test authorized access
+- Test unauthorized access
+- Document security findings with technical evidence
 
-## Project Files
-- access-control-report.md: Lab report and findings
-- commands-used.txt: Configuration and test commands
-- screenshots/: Evidence collected during testing
+## Lab Environment
 
-## Results
-See access-control-report.md for verified test results.
-Results will be documented after testing is complete.
+| Component | Details |
+|---|---|
+| Operating System | Kali Linux |
+| Virtualization | VMware Workstation |
+| Access Control | Linux users and groups |
+| Permission Model | Linux file and directory permissions |
+| Repository | GitHub |
+
+## IAM Structure
+
+### Users
+
+| User | Department | Group |
+|---|---|---|
+| Alice | IT | IT |
+| David | IT | IT |
+| Sarah | HR | HR |
+| John | Finance | Finance |
+
+### Department Resources
+
+```text
+/company/
+├── IT/
+├── HR/
+└── Finance/
